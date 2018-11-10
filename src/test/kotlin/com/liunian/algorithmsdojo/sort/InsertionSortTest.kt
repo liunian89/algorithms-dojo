@@ -1,32 +1,36 @@
 package com.liunian.algorithmsdojo.sort
 
+import org.junit.Assert
 import org.junit.Assert.assertArrayEquals
 import org.junit.Test
 import java.util.*
 
 class InsertionSortTest {
 
-
-    private val subject = arrayOf(5, 2, 4, 6, 1, 3)
-
-
     @Test
     fun testSort() {
+        val subject = arrayOf(5, 2, 4, 6, 1, 3)
         val result = InsertionSort().sort(subject)
         assertArrayEquals(arrayOf(1, 2, 3, 4, 5, 6), result)
     }
 
     @Test
     fun testAnotherSort() {
+        val subject = arrayOf(5, 2, 4, 6, 1, 3)
         val result = InsertionSort().sortTedious(subject)
         assertArrayEquals(arrayOf(1, 2, 3, 4, 5, 6), result)
     }
 
-
-    private val withDuplicates = arrayOf(5, 2, 4, 3, 6, 1, 3)
+    @Test
+    fun testSingleElementArray() {
+        val subject = arrayOf(1)
+        InsertionSort().sort(subject)
+        Assert.assertArrayEquals(arrayOf(1), subject)
+    }
 
     @Test
     fun testDuplicates() {
+        val withDuplicates = arrayOf(5, 2, 4, 3, 6, 1, 3)
         val result = InsertionSort().sort(withDuplicates)
         assertArrayEquals(arrayOf(1, 2, 3, 3, 4, 5, 6), result)
     }
@@ -46,5 +50,11 @@ class InsertionSortTest {
 
     }
 
+    @Test
+    fun testSortDesc() {
+        val subject = arrayOf(5, 2, 4, 6, 1, 3)
+        InsertionSort().sortDesc(subject)
+        Assert.assertArrayEquals(arrayOf(6, 5, 4, 3, 2, 1), subject)
+    }
 
 }
